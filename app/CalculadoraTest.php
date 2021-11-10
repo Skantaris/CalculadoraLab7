@@ -87,57 +87,6 @@ use \PHPUnit\Framework\TestCase;
             $this -> assertNotEmpty ($calculadora-> GenerarArreglo());
           
         }
-
-        
-    public function testCapturarEntradasPermutacion(){
-        // Se crea el doble de prueba para la clase Calculadora, método 'capturarEntradasPermutacion'
-        $stub = $this->createMock('Calculadora');
-        $stub->method('capturarEntradasPermutacion')
-            ->willReturn(array(5, 3));
-
-        $this->assertSame(array(5, 3), $stub->capturarEntradasPermutacion());
-    }
-
-    public function testCalcularPermutacion(){
-         $mock = $this->getMockBuilder('Calculadora')
-            ->onlyMethods(array('calcularFactorial'))
-            ->getMock();
-        $mock->expects($this->exactly(2))
-            ->method('calcularFactorial')
-            ->will($this->onConsecutiveCalls(120, 6));
-        $this->assertSame(20, $mock->calcularPermutacion(5, 2));
-
-    }
-
-    public function testComprobarLlamada(){
-        $mock = $this->getMockBuilder('Calculadora')
-            ->onlyMethods(array('calcularFactorial'))
-            ->getMock();
-        //5
-        /*$mock->expects($this->exactly(2))
-            ->method('calcularFactorial')
-            ->withConsecutive([5],[3]);
-        $mock->calcularFactorial(5);
-        $mock->calcularFactorial(3); */
-
-        //6
-         /*$mock->expects($this->once())
-            ->method('calcularFactorial')
-            ->with(5)
-            ->will($this->returnValue(120));
-        $resultado_calculado = $mock->calcularFactorial(5);
-        $this->assertEquals(120, $resultado_calculado);
-        //$mock->calcularFactorial(1);*/
-        
-        //7
-        $mock->expects($this->exactly(2))
-            ->method('calcularFactorial')
-            ->withConsecutive([5],[3])
-            ->will($this->onConsecutiveCalls(120, 6));
-        $this->assertEquals(120, $mock->calcularFactorial(5));
-        $this->assertEquals(6, $mock->calcularFactorial(3));
-
-    }
     }
 
 
